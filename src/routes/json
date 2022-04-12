@@ -1,0 +1,34 @@
+const players = [{
+    name: "manish",
+    dob: "01/01/1995",
+    gender: "male"
+  },{
+    name: 'asish',
+    dob: '01/09/1995',
+    gender: 'male',
+    city: 'delhi'
+  },{
+    name: 'nirmal',
+    dob: '01/02/1992',
+    gender: 'male',
+    city: 'mumbai',
+  }
+  ]
+  
+  let log= function(req,res){
+  const newName = req.body.name
+      let flag = false
+      for(let i=0; i<players.length; i++){
+          if(players[i].name === newName){
+              flag = true
+              res.send({message: "Player '" + newName + "' already exist in the list"})
+          }
+      }
+      if(!flag){
+      players.push(req.body)
+      res.send(players)
+      }
+  });
+    .filter((newname)=>player.name === newname)
+  let xyz=function(req,res)
+  module.export.abc = log
