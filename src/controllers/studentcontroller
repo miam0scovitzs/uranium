@@ -1,0 +1,63 @@
+const dev_Model=require("../assaign18/developer")
+const batchModel=require("../assaign18/batchmodel")
+
+const createBatch= async(req,res)=> {
+    let batch =req.body
+    let batchCreat =await batchModel.create(batch)
+    res.send({data:batchCreat})
+}
+
+const createdeveloper= async(req,res)=> {
+    let developer=req.body
+    let developerCreate =await dev_Model.create(developer)
+    res.send({data:developerCreate})}
+
+const fbook= async (req,res)=>{
+        let alldata =await dev_Model.find().populate('batch')
+        res.send({msg:alldata})}
+
+const scholarship_developer=async(req,res)=>{
+        let data = await dev_Model.find({gender:"female",percentage:{$gte:70}})
+        res.send(data)
+}
+
+
+const devloper= async(req,res)=>{
+    // let data =req.query
+    // let batchName=data.program
+    // let per =data.percentage
+    // let reqBatch= await batchmodel.find({name:batchName}).select({_id:1})
+    // let result = await dev_Model.find({percentage:{$gt:per},batch:reqBatch}).populate('batch')
+    // res.send({data:result})
+     let b =req.query.percentage
+     let c =req.query.program
+   let ba=await batchModel.find({name:c}).select({name:1})//.populate('batch')
+     console.log(ba)
+     let ca=await dev_Model.find({batch:ba, percentage:{$gt:b}}).populate('batch')
+   res.send({msg:ca})
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+module.exports.createBatch=createBatch
+module.exports.createdeveloper=createdeveloper
+module.exports.fbook=fbook
+module.exports.scholarship_developer=scholarship_developer
+module.exports.devloper=devloper
