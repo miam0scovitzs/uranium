@@ -1,0 +1,19 @@
+const mongoose =require("mongoose")
+const ObjectId = mongoose.Schema.Types.ObjectId
+
+
+const purchaseSchema=new mongoose.schema({
+    userId:{
+        type:ObjectId,ref:'name1'
+    },
+    puoductId:{
+        type:ObjectId,ref:'product'
+    },
+    ammount:Number,
+    isFreeUser:Boolean,
+    date:String
+  
+  
+},{timestamp:true});
+
+module.exports = mongoose.model('purchase', purchaseSchema)

@@ -1,0 +1,13 @@
+const mongoose =require("mongoose")
+
+const nameSchema=new mongoose.schema({
+    name:String,
+    balance:{
+        type:Number,default:100
+    },
+    address:String,
+    gender:{type:String,enum:["male","female","others"]},
+    isFreeUser:{type:Boolean,default:false},
+},{timestamp:true});
+
+module.exports = mongoose.model('name1', nameSchema)

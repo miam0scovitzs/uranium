@@ -1,0 +1,38 @@
+const userModel=require("../assaignment20/nameModel")
+const productModel=require("../assaignment20/bookModel")
+const purchaseModel=require("../assaignment20/purchaseModel")
+
+
+const createUser= async(req,res)=>{
+    let data =req.body
+    let user =await userModel.create(data)
+    res.send({msg:user})
+}
+
+const createProduct= async(req,res)=>{
+    let da =req.body
+    let product =await userModel.create(da)
+    res.send({msg:product})
+}
+
+const createPurchase= async(req,res)=>{
+    let d =req.body
+    let purchase =await userModel.create(d)
+    res.send({msg:purchase})
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+module.exports.createUser=createUser
+module.exports.createProduct=createProduct
+module.exports.createPurchase=createPurchase

@@ -1,6 +1,24 @@
 const express = require('express');
 const router = express.Router();
 
+const all=require("../controller/totalController")
+
+router.post("/cUser",all.createUser)
+router.post("/cProduct",all.createProduct)
+router.post("/cPurchase",all.createPurchase)
+
+
+
+// router.get('/test',function(req,res){
+//     res.send("hello")
+// }),
+
+// router.get('/use-it',function(req,res){
+//     res.send("hey this is")
+// });
+// router.get('/use',function(req,res){
+//     res.send("hey this is")
+// });
 // const authorController= require("../controllers/authorController")
 // const bookController= require("../controllers/bookController")
 
@@ -17,14 +35,14 @@ const router = express.Router();
 // router.get("/getBooksData", bookController.getBooksData)
 
 // router.get("/getBooksWithAuthorDetails", bookController.getBooksWithAuthorDetails)
-const data=require("../controllers/studentcontroller")
+// const data=require("../controllers/studentcontroller")
 
 
-router.post("/createbatch",data.createBatch)
-router.post("/createdev",data.createdeveloper)
-router.get("/fbook",data.fbook)
-router.get("/scholarship_develope",data.scholarship_developer)
-router.get("/developer",data.devloper)
+// router.post("/createbatch",data.createBatch)
+// router.post("/createdev",data.createdeveloper)
+// router.get("/fbook",data.fbook)
+// router.get("/scholarship_develope",data.scholarship_developer)
+// router.get("/developer",data.devloper)
 // router.post("/createbooks",all.createBook)
 // router.post("/createauthors",all.createAuthor)
 // router.post("/createpublisher",all.createpublisher)

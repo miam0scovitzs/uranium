@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const route = require('./routes/route.js');
 const { default: mongoose } = require('mongoose');
+const moment =require("moment")
 const app = express();
 
 app.use(bodyParser.json());
@@ -13,6 +14,13 @@ mongoose.connect("mongodb+srv://pattamu:iKHwECgQCaYNVpge@sandeepcluster.9rzkh.mo
 })
 .then( () => console.log("MongoDb is connected"))
 .catch ( err => console.log(err) )
+
+app.use(
+    function(req,res,next){
+        console.log(moment().format('YYYY-MM-DD HH:MM:SS'),",",req.ip,',',req.path);
+        next()
+    }
+);
 
 app.use('/', route);
 
