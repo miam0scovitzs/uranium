@@ -1,6 +1,6 @@
 const mongoose =require("mongoose")
 
-const nameSchema=new mongoose.schema({
+const nameSchema=new mongoose.Schema({
     name:String,
     balance:{
         type:Number,default:100

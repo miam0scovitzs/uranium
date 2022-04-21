@@ -1,0 +1,13 @@
+const headerCheck = async (req, res, next) => {
+    const header = req.headers.isfreeuser
+    if(header){
+        if(header === "true")
+        req['isFreeUser'] = true
+        if(header === "false")
+        req['isFreeUser'] = false
+    next()
+    }
+    else res.send({msg: "An usefull header is missing"})
+}
+
+module.exports = {headerCheck}

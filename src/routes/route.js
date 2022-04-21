@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const all=require("../controller/totalController")
+const all=require("../controllers/totalController")
+const {headerCheck} = require("../middleware/newmw")
 
-router.post("/cUser",all.createUser)
-router.post("/cProduct",all.createProduct)
-router.post("/cPurchase",all.createPurchase)
+router.post("/cUser",headerCheck,all.createUser)
+router.post("/cProduct",headerCheck,all.createProduct)
+router.post("/cPurchase",headerCheck,all.createPurchase)
 
 
 

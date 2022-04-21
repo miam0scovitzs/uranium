@@ -11,13 +11,14 @@ const createUser= async(req,res)=>{
 
 const createProduct= async(req,res)=>{
     let da =req.body
-    let product =await userModel.create(da)
+    let product =await productModel.create(da)
+    console.log(product)
     res.send({msg:product})
 }
 
 const createPurchase= async(req,res)=>{
     let d =req.body
-    let purchase =await userModel.create(d)
+    let purchase =await purchaseModel.create(d)
     res.send({msg:purchase})
 }
 
