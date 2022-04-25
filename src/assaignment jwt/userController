@@ -1,0 +1,89 @@
+const res = require("express/lib/response");
+const jwt = require("jsonwebtoken");
+const  userModel=require("./userModel")
+
+const createUser= async function(req,res)  {
+    let data =req.body
+    let allData = await userModel.create(data)
+    res.send({msg:allData})
+
+}
+const login = async function(req,res){
+    let userId = req.body. emailId
+    let pass =req.body.password
+    let user = await userModel.findOne({ emailId:userId ,password:pass})
+    if(!user) {
+        res.send({status:false ,msg: "userId and password doesnot match"})
+    }
+
+let token =jwt.sign({
+    userId: user._id.toString(),
+        batch:"uranium",
+    organization:"functionUp"
+},"functionup-uranium");
+res.setHeader("my-auth-token",token)
+res.send({status:true ,data:token})
+}
+
+const getData= async function(req,res){
+let token = req.headers["my-auth-token"]
+if(!token) {
+    res.send({msg:"valid token required"})
+}
+let decodedToken = jwt.verify (token,"functionup-uranium") 
+if (!decodedToken)  {
+    res.send("token doesnot match")
+}
+let b = req.params.mobile
+let userDetails= await userModel.findOne({mobile:b})
+// console.log(b)
+ if(!b)   res.send("no such user exists")
+
+res.send({data:userDetails})
+}
+
+const updateUser = async function (req, res) {    
+     let user = await userModel.findById(req.params.userId);
+      if (!user) {
+        return res.send("No such user exists");
+      }
+    //   let userData = req.body;
+      let updatedUser = await userModel.findOneAndUpdate({ _id: req.params.userId}, req.body,{new:true} );
+      res.send({ status: updatedUser, data: updatedUser });
+    };
+
+const deletedUser =async function(req,res){
+  let user = await userModel.findById(req.params.userId);
+    if (!user) {
+      return res.send("No such user exists");
+    }
+//    let deleteData = req.body;
+    let deletedUser = await userModel.findOneAndUpdate({ _id: req.params.userId }, {isDeleted:true},{new:true} );
+    res.send({ status: true, data: deletedUser });
+}
+
+// const auth =async function(res,req){
+//     let token = req.headers["my-auth-token"]
+// if(!token) {
+//     res.send({msg:"valid token required"})
+// }
+
+//     let decodedToken = jwt.verify (token,"functionup-uranium") 
+// if (!decodedToken)  {
+//     res.send("token doesnot match")
+// }
+
+//     let id =decodedToken.userId
+//     console.log(id)
+//     let userId=req.body._id
+//     if(!userId==id) res.send(m)
+// }
+
+
+
+module.exports.createUser=createUser
+module.exports.login=login
+module.exports.getData=getData
+module.exports.updateUser=updateUser
+module.exports.deletedUser=deletedUser
+// module.exports.auth=auth

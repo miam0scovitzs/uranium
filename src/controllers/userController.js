@@ -88,3 +88,9 @@ module.exports.createUser = createUser;
 module.exports.getUserData = getUserData;
 module.exports.updateUser = updateUser;
 module.exports.loginUser = loginUser;
+
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+eyJ1c2VySWQiOiI2MjYxOTY0NmYyZTRhMzVjNzcwYTkyMmYiLCJiYXRjaCI6InVyYW5pdW0iLCJvcmdhbml6YXRpb24iOi
+JmdW5jdGlvblVwIiwiaWF0IjoxNjUwNTY0NTk4fQ.
+V7MMnpuOGxoBxfIG4dhw2MF3mwaq3SzRnrQ9ytMVu8U
